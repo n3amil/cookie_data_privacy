@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-19T15:43:17Z" product-name="cookie_data_privacy">
+		<header/>
+		<body>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1">
+				<source>Cookie Data Privacy</source>
+			</trans-unit>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1.description">
+				<source>Cookie Data Privacy EU law 2018</source>
+			</trans-unit>
+			<trans-unit id="in_footer.description">
+				<source>inFooter</source>
+			</trans-unit>
+			<trans-unit id="js_script.description">
+				<source>jsScript</source>
+			</trans-unit>
+			<trans-unit id="enable_form_privacy.description">
+				<source>enableFormPrivacy</source>
+			</trans-unit>
+			<trans-unit id="position.description">
+				<source>position</source>
+			</trans-unit>
+			<trans-unit id="popup_background.description">
+				<source>popupBackground</source>
+			</trans-unit>
+			<trans-unit id="button_background.description">
+				<source>buttonBackground</source>
+			</trans-unit>
+			<trans-unit id="domain.description">
+				<source>domain</source>
+			</trans-unit>
+			<trans-unit id="expiry_day.description">
+				<source>expiryDay</source>
+			</trans-unit>
+			<trans-unit id="cookie_page_uid.description">
+				<source>cookiePageUid</source>
+			</trans-unit>
+			<trans-unit id="data_privacy_page_uid.description">
+				<source>dataPrivacyPageUid</source>
+			</trans-unit>
+			<trans-unit id="js_path_external.description">
+				<source>jsPathExternal</source>
+			</trans-unit>
+			<trans-unit id="css_path_external.description">
+				<source>cssPathExternal</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

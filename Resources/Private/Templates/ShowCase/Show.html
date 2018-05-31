@@ -1,0 +1,141 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="main">
+<f:if condition="{status}"><f:if condition="{privacyConfig.jsScript}">
+<script type="text/javascript">
+<f:format.raw>{privacyConfig.jsScript}</f:format.raw>
+</script>
+</f:if></f:if>
+<f:if condition="{settings.enableLanguage} == 1">
+	<f:then>
+		<v:variable.set name="cookieHeader" value='{settings.cookieHeader}' />
+		<v:variable.set name="cookieMessage" value='{settings.cookieMessage}' />
+		<v:variable.set name="cookieDismiss" value='{settings.cookieDismiss}' />
+		<v:variable.set name="cookieAllow" value='{settings.cookieAllow}' />
+		<v:variable.set name="cookieDeny" value='{settings.cookieDeny}' />
+		<v:variable.set name="cookieLink" value='{settings.cookieLink}' />
+		<v:variable.set name="cookieRevoke" value='{settings.cookieRevoke}' />
+	</f:then>
+	<f:else>
+		<v:variable.set name="cookieHeader" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.header" />' />
+		<v:variable.set name="cookieMessage" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.message" />' />
+		<v:variable.set name="cookieDismiss" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.dismiss" />' />
+		<v:variable.set name="cookieAllow" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.allow" />' />
+		<v:variable.set name="cookieDeny" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.deny" />' />
+		<v:variable.set name="cookieLink" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.link" />' />
+		<v:variable.set name="cookieRevoke" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_cookie_bar.revoke" />' />
+	</f:else>
+</f:if>
+<v:asset.script name="{privacyConfig.domain}_cookie_data_privacy" dependencies="jquery" fluid="TRUE" rewrite="TRUE" overwrite="TRUE">
+	/*
+	 * deleteCookies 
+	 * delete all cookies except those listed in the array essential
+	 */	
+	window.cookieconsent.Popup.prototype.deleteCookies = function() { 
+		//List of essential cookies - set as an empty array to delete everything - i.e. var essential = [];
+		var essential = ['cookieconsent_status', 'DYNSRV', ' cookieconsent_status'];
+		//var essential = [];
+		
+		//create array of cookies set
+		var cookies = document.cookie.split(";");
+		
+		//loop through the cookies
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = cookies[i];
+			
+			//Get the cookie name
+			var eqPos = cookie.indexOf("=");
+			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+			
+			//Delete all cookies except those listed in essential
+			if (essential === undefined || essential.length == 0 || essential.indexOf(name) == -1){
+				//document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                //document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+				
+				//console.log(name);
+				var d = new Date();
+				var cvalue = '';
+				var exMins = 0;
+				d.setTime(d.getTime() + (exMins*60*1000));
+				var expires = "expires="+d.toUTCString(); 
+				//document.cookie = name + "=" + cvalue + ";" + expires + ";path=/; Max-Age=0";
+				document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0; domain={privacyConfig.domain};';
+			}
+		}
+	};
+
+	var p;
+	window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+			position: '<f:format.raw value="{privacyConfig.position}" />',
+			palette:{
+		      popup: {background: '<f:format.raw value="{privacyConfig.popupBackground}" />'},
+		      button: {background: '<f:format.raw value="{privacyConfig.buttonBackground}" />'},
+		    },
+			cookie: {
+			        // This is the name of this cookie - you can ignore this
+			        name: 'cookieconsent_status',
+			        // This is the url path that the cookie 'name' belongs to. The cookie can only be read at this location
+			        path: '/',
+			        // This is the domain that the cookie 'name' belongs to. The cookie can only be read on this domain.
+			        //  - Guide to cookie domains - http://erik.io/blog/2014/03/04/definitive-guide-to-cookie-domains/
+			        domain: '<f:format.raw value="{privacyConfig.domain}" />',
+			        // The cookies expire date, specified in days (specify -1 for no expiry)
+			        expiryDays: <f:format.raw value="{privacyConfig.expiryDay}" />,
+			},
+			// these callback hooks are called at certain points in the program execution
+		    //onPopupOpen: function() {},
+		    //onPopupClose: function() {},
+		    onInitialise: function(status) {
+		    	if(status){
+		    		console.log('Cookie status: '+status);
+			    }
+			    
+			    if(status === 'deny'){ // delete all cookie 100% DSGVO fullfiellment
+					this.deleteCookies();
+				}
+		    },
+		    onStatusChange: function(status, chosenBefore) {
+	      		location.reload(true);
+		    },
+		      //onRevokeChoice: function() {},
+
+		      // each item defines the inner text for the element that it references
+		      content: {
+		        header: '<f:format.raw value="{cookieHeader}" />',
+		        message: '<f:format.raw value="{cookieMessage}" />',
+		        dismiss: '<f:format.raw value="{cookieDismiss}" />',
+		        allow: '<f:format.raw value="{cookieAllow}" />',
+		        deny: '<f:format.raw value="{cookieDeny}" />',
+		        link: '<f:format.raw value="{cookieLink}" />',
+		        href: '<f:uri.page pageUid="{privacyConfig.cookiePageUid}" absolute="1" />',
+		        close: '&#x274c;',
+			},
+			revokeBtn: '<div class="cc-revoke cc-animate cc-<f:format.raw value="{privacyConfig.position}" /> {{classes}}"><f:format.raw value="{cookieRevoke}" /></div>',
+			compliance: {
+		        'info': '<div class="cc-compliance">{{dismiss}}</div>',
+		        'opt-in': '<div class="cc-compliance cc-highlight">{{deny}}{{allow}}</div>',
+		        'opt-out': '<div class="cc-compliance cc-highlight">{{deny}}{{dismiss}}</div>',
+			},
+			type: 'opt-in',
+		}, function (popup) {
+		    p = popup;
+		});
+	});
+	
+	
+	jQuery(document).ready(function($){
+		$('#cookie-btn-open').on('click',function(){
+			p.revokeChoice();
+		});
+	});
+	jQuery(window).bind("load", function() {
+		setTimeout(function() {
+			jQuery('.cc-revoke').addClass('cc-revoke-show');
+		}, 2000);
+	});
+</v:asset.script>
+</f:section>
+</html>

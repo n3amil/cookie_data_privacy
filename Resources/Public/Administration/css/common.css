@@ -1,0 +1,10 @@
+#wrapper #page-wrapper{margin-left:0;border-left:none;}
+.show-grid .col-lg-12{background-color: #f5f5f5 !important; float: left;width: 100%;}
+.show-grid .col-lg-12 .btn-reset{margin-left:5px;}
+.margin-top{margin-top:10px;}
+.btn-primary:active,.btn-primary:focus{color: #fff;}
+.help-block{font-size: 12px;color: #8a6d3b;}
+.typo3-messages .media-left{display: none;}
+ul.typo3-messages{padding: 0px;}
+ul.typo3-messages li{list-style: none;}
+#wrapper{height: 800px; overflow: auto;}

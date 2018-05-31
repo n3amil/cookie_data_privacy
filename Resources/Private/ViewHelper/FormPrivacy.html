@@ -1,0 +1,62 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:if condition="{formPrivacyData.enable_form_privacy} == 1">
+	<div class="data-privacy-form">
+		<f:if condition="{settings.enableLanguage} == 1">
+			<f:then>
+				<v:variable.set name="requiredMessage" value='{settings.dataRequired}' />
+				<div class="checkbox checkbox1">
+					<label class="noselect">
+						<input class="cookie-required" type="checkbox">
+						<f:format.raw>{settings.dataCheckbox1}</f:format.raw>
+						<span class="form-error hidden check-cookie-required">{requiredMessage}</span>
+					</label>
+				</div>
+				<div class="checkbox checkbox2">
+					<label class="noselect">
+						<input class="data-required" type="checkbox">
+						<f:format.raw>{checkbox2Message}</f:format.raw>
+						<span class="form-error hidden check-data-required">{requiredMessage}</span>
+					</label>
+				</div>
+			</f:then>
+			<f:else>
+				<v:variable.set name="requiredMessage" value='<f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_data_privacy.required" />' />
+				<div class="checkbox checkbox1">
+					<label class="noselect">
+						<input class="cookie-required" type="checkbox">
+						<f:format.raw><f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_data_privacy.checkbox1" arguments="{0:'{f:uri.page(pageUid:formPrivacyData.data_privacy_page_uid)}',1:'{f:uri.page(pageUid:formPrivacyData.cookie_page_uid)}'}" /></f:format.raw>
+						<span class="form-error hidden check-cookie-required">{requiredMessage}</span>
+					</label>
+				</div>
+				<div class="checkbox checkbox2">
+					<label class="noselect">
+						<input class="data-required" type="checkbox">
+						<f:format.raw><f:translate key="LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang.xlf:tx_cookiedataprivacy_data_privacy.checkbox2.{translateKey}" /></f:format.raw>
+						<span class="form-error hidden check-data-required">{requiredMessage}</span>
+					</label>
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+<v:asset.script name="{formPrivacyData.domain}_cookie_data_privacy_submit_script" dependencies="jquery" fluid="TRUE" rewrite="TRUE" overwrite="TRUE" standalone="false">
+	jQuery(document).ready(function($){
+		$('form').on('submit',function(){
+			var _formName = $(this).attr('name');
+			if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked") || !jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+				if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked")){
+					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').removeClass('hidden');
+				}else{
+					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').addClass('hidden');
+				}
+				if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').removeClass('hidden');
+				}else{
+					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').addClass('hidden');
+				}
+				//console.log('error');
+				return false;
+			}
+		});
+	});
+</v:asset.script>
+</f:if>

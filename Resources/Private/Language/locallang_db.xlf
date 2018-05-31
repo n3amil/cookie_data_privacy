@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-19T15:43:17Z" product-name="cookie_data_privacy">
+		<header/>
+		<body>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1">
+				<source>Cookie Data Privacy</source>
+			</trans-unit>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1.description">
+				<source>Cookie Data Privacy EU law 2018</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig">
+				<source>Privacy Config</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.in_footer">
+				<source>In Footer</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.js_script">
+				<source>Js Script</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.enable_form_privacy">
+				<source>Enable Form Privacy</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.position">
+				<source>Position</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.popup_background">
+				<source>Popup Background</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.button_background">
+				<source>Button Background</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.domain">
+				<source>Domain</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.expiry_day">
+				<source>Expiry Day</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.cookie_page_uid">
+				<source>Cookie Page Uid</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.data_privacy_page_uid">
+				<source>Data Privacy Page Uid</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.js_path_external">
+				<source>Js Path External</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.css_path_external">
+				<source>Css Path External</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_fileinclude">
+				<source>File Include</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_fileinclude.original_path">
+				<source>Original Path</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_fileinclude.path">
+				<source>Path</source>
+			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_showcase">
+				<source>Show Case</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

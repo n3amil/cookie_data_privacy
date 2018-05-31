@@ -1,0 +1,109 @@
+
+plugin.tx_cookiedataprivacy_ext1 {
+  view {
+    templateRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Templates/
+    templateRootPaths.1 = {$plugin.tx_cookiedataprivacy_ext1.view.templateRootPath}
+    partialRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Partials/
+    partialRootPaths.1 = {$plugin.tx_cookiedataprivacy_ext1.view.partialRootPath}
+    layoutRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Layouts/
+    layoutRootPaths.1 = {$plugin.tx_cookiedataprivacy_ext1.view.layoutRootPath}
+  }
+  persistence {
+    storagePid = {$plugin.tx_cookiedataprivacy_ext1.persistence.storagePid}
+    #recursive = 1
+  }
+  features {
+    #skipDefaultArguments = 1
+  }
+  mvc {
+    #callDefaultActionIfActionCantBeResolved = 1
+  }
+  settings{
+    enableLanguage = {$plugin.tx_cookiedataprivacy_ext1.settings.enableLanguage}
+    cookieHeader = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieHeader}
+    cookieMessage = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieMessage}
+    cookieDismiss = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieDismiss}
+    cookieAllow = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieAllow}
+    cookieDeny = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieDeny}
+    cookieLink = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieLink}
+    cookieRevoke = {$plugin.tx_cookiedataprivacy_ext1.settings.cookieRevoke}
+    dataRequired = {$plugin.tx_cookiedataprivacy_ext1.settings.dataRequired}
+    dataCheckbox1 = {$plugin.tx_cookiedataprivacy_ext1.settings.dataCheckbox1}
+    data_privacy_contact_form = {$plugin.tx_cookiedataprivacy_ext1.settings.dataCheckbox2}
+  }
+}
+
+### Include CSS ###
+page.includeCSS {
+  fileCookieIncludeCss001 = EXT:cookie_data_privacy/Resources/Public/css/cookieconsent.min.css
+  fileCookieIncludeCss002 = EXT:cookie_data_privacy/Resources/Public/css/common.css
+}
+### Include JS ###
+[globalVar = LIT:0 < {$plugin.tx_cookiedataprivacy_ext1.settings.enableJquery}]
+  page.includeJS {
+    fileCookieIncludeJs001 = EXT:cookie_data_privacy/Resources/Public/js/jquery.min.js
+    fileCookieIncludeJs001.forceOnTop = 1
+  }
+[end]
+page.includeJS{
+  fileCookieIncludeJs002 = EXT:cookie_data_privacy/Resources/Public/js/cookieconsent.min.js
+}
+
+page.15035 = USER
+page.15035 {
+  userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  pluginName = Ext1
+  extensionName = CookieDataPrivacy
+  vendorName = TYPO3Liebhaber
+  action = show
+  view < plugin.tx_cookiedataprivacy_ext1.view
+  persistence < plugin.tx_cookiedataprivacy_ext1.persistence
+}
+
+plugin.tx_cookiedataprivacy._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    input.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    .tx-cookie-data-privacy table {
+        border-collapse:separate;
+        border-spacing:10px;
+    }
+
+    .tx-cookie-data-privacy table th {
+        font-weight:bold;
+    }
+
+    .tx-cookie-data-privacy table td {
+        vertical-align:top;
+    }
+
+    .typo3-messages .message-error {
+        color:red;
+    }
+
+    .typo3-messages .message-ok {
+        color:green;
+    }
+)
+
+# Module configuration
+module.tx_cookiedataprivacy_tools_cookiedataprivacymod1 {
+  persistence {
+    storagePid = {$module.tx_cookiedataprivacy_mod1.persistence.storagePid}
+  }
+  view {
+    templateRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Backend/Templates/
+    templateRootPaths.1 = {$module.tx_cookiedataprivacy_mod1.view.templateRootPath}
+    partialRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Backend/Partials/
+    partialRootPaths.1 = {$module.tx_cookiedataprivacy_mod1.view.partialRootPath}
+    layoutRootPaths.0 = EXT:cookie_data_privacy/Resources/Private/Backend/Layouts/
+    layoutRootPaths.1 = {$module.tx_cookiedataprivacy_mod1.view.layoutRootPath}
+  }
+}

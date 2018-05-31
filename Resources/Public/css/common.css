@@ -1,0 +1,16 @@
+.cc-revoke{color: rgb(255, 255, 255);background-color: rgb(34, 34, 34);}
+.cc-revoke-show{display: block !important; transform: translateY(0) !important;}
+.cc-revoke:hover{text-decoration: none;}
+.cc-btn.cc-allow{min-width: auto !important;}
+.tx-powermail ul{margin:0px;padding: 0px; }
+.tx-powermail ul li{list-style: none;color: #ff0000;}
+.data-privacy-form .form-error{color: #ff0000; display: block;}
+.data-privacy-form .hidden{display: none !important;}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}

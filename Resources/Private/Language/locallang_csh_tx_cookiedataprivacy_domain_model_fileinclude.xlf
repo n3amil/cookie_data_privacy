@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-19T15:43:17Z" product-name="cookie_data_privacy">
+		<header/>
+		<body>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1">
+				<source>Cookie Data Privacy</source>
+			</trans-unit>
+			<trans-unit id="tx_cookie_data_privacy_domain_model_ext1.description">
+				<source>Cookie Data Privacy EU law 2018</source>
+			</trans-unit>
+			<trans-unit id="original_path.description">
+				<source>originalPath</source>
+			</trans-unit>
+			<trans-unit id="path.description">
+				<source>path</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,1 +1,1 @@
-# cookie_data_privacy
+# Cookie Privacy & Data Privacy (DSGVO)

@@ -15,8 +15,8 @@ namespace TYPO3Liebhaber\CookieDataPrivacy\Controller;
 /**
  * ShowCaseController
  */
- use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
- 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 class ShowCaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
@@ -27,7 +27,7 @@ class ShowCaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     protected $showCaseRepository = null;
 
-        /**
+    /**
      * privacyConfigRepository
      *
      * @var \TYPO3Liebhaber\CookieDataPrivacy\Domain\Repository\PrivacyConfigRepository
@@ -51,23 +51,27 @@ class ShowCaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      *
      * @return void
      */
-    public function showAction(){
+    public function showAction()
+    {
         $GLOBALS['TSFE']->set_no_cache(); // set no cache for multi-language switch
 
         $cookie_status = $_COOKIE['cookieconsent_status'];
-        
+
         $rootPageUid = 0;
-        if ($GLOBALS['TSFE']->rootLine[0]) {
-            $rootPageUid = (int)$GLOBALS['TSFE']->rootLine[0]['uid'];
+        foreach ($GLOBALS['TSFE']->rootLine as $rootline) {
+            if ($rootline['is_siteroot']) {
+                $rootPageUid = $rootline['uid'];
+                break;
+            }
         }
-        
+
         $privacyConfigs = $this->privacyConfigRepository->findByRootPageUid($rootPageUid);
         //DebuggerUtility::var_dump($privacyConfigs);exit;
         $this->view->assign('privacyConfig', $privacyConfigs[0]);
-        
-        if(empty($cookie_status) || $cookie_status === 'allow'){
+
+        if (empty($cookie_status) || $cookie_status === 'allow') {
             $this->view->assign('status', 1);
-        }elseif($cookie_status === 'deny'){
+        } elseif ($cookie_status === 'deny') {
             // delete all cookie 100% DSGVO fullfiellment
             /*$_COOKIE = array();
             $_COOKIE['cookieconsent_status'] = $cookie_status;*/

@@ -125,10 +125,45 @@
 		});
 	});
 	
-	
 	jQuery(document).ready(function($){
 		$('#cookie-btn-open').on('click',function(){
 			p.revokeChoice();
+		});
+
+		$('form').on('submit',function(){
+			var _formID = $(this).attr('id');
+			if(typeof _formID !== 'undefined'){
+				if(!jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked") || !jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+					if(!jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked")){
+						jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox1 .check-cookie-required').removeClass('hidden');
+					}else{
+						jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox1 .check-cookie-required').addClass('hidden');
+					}
+					if(!jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+						jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox2 .check-data-required').removeClass('hidden');
+					}else{
+						jQuery('form[id="'+_formID+'"] .data-privacy-form .checkbox2 .check-data-required').addClass('hidden');
+					}
+					//console.log('ID error');
+					return false;
+				}
+			}else{ /*fallback*/
+				var _formName = $(this).attr('name');
+				if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked") || !jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+					if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked")){
+						jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').removeClass('hidden');
+					}else{
+						jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').addClass('hidden');
+					}
+					if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
+						jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').removeClass('hidden');
+					}else{
+						jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').addClass('hidden');
+					}
+					//console.log('name error');
+					return false;
+				}
+			}
 		});
 	});
 	jQuery(window).bind("load", function() {

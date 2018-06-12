@@ -56,8 +56,11 @@ class FormPrivacyViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         }
 
         $rootPageUid = 0;
-        if ($GLOBALS['TSFE']->rootLine[0]) {
-            $rootPageUid = (int)$GLOBALS['TSFE']->rootLine[0]['uid'];
+        foreach ($GLOBALS['TSFE']->rootLine as $rootline) {
+            if ($rootline['is_siteroot']) {
+                $rootPageUid = (int)$rootline['uid'];
+                break;
+            }
         }
 		$formPrivacyData = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('uid,enable_form_privacy,cookie_page_uid,data_privacy_page_uid,domain', 'tx_cookiedataprivacy_domain_model_privacyconfig', '(deleted=0 AND hidden=0) AND root_page_uid='.$rootPageUid, '', '', '', '');
 		//DebuggerUtility::var_dump($formPrivacyData);exit;

@@ -38,25 +38,4 @@
 			</f:else>
 		</f:if>
 	</div>
-<v:asset.script name="{formPrivacyData.domain}_cookie_data_privacy_submit_script" dependencies="jquery" fluid="TRUE" rewrite="TRUE" overwrite="TRUE" standalone="false">
-	jQuery(document).ready(function($){
-		$('form').on('submit',function(){
-			var _formName = $(this).attr('name');
-			if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked") || !jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
-				if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .cookie-required').is(":checked")){
-					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').removeClass('hidden');
-				}else{
-					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox1 .check-cookie-required').addClass('hidden');
-				}
-				if(!jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .data-required').is(":checked")){
-					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').removeClass('hidden');
-				}else{
-					jQuery('form[name="'+_formName+'"] .data-privacy-form .checkbox2 .check-data-required').addClass('hidden');
-				}
-				//console.log('error');
-				return false;
-			}
-		});
-	});
-</v:asset.script>
 </f:if>

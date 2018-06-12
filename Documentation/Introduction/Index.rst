@@ -37,4 +37,7 @@ Screenshots
 
 .. figure:: ../Images/data_privacy.png
    :alt: Data Privacy
-   
+
+.. important::
+
+   A form must have defined ID and ID should be unique

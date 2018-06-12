@@ -33,6 +33,10 @@ Add cookie_data_privacy static template
 .. figure:: ../Images/add_static_template.png
    :alt: include Static
 
+.. important::
+
+   Default language label can be change from constants
+
 .. _admin-configuration:
 
 Backend Configuration

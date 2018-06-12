@@ -14,8 +14,8 @@ Links
 :TER:
 	https://extensions.typo3.org/extension/cookie_data_privacy
 
+:YouTube:
+	https://www.youtube.com/watch?v=QliaErPwato
+
 :Contact:
 	`@<TYPO3Liebhaber> <https://twitter.com/TYPO3Liebhaber>`__
-
-:YouTube Tutorial:
-	https://www.youtube.com/watch?v=QliaErPwato

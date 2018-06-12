@@ -60,7 +60,7 @@ class ShowCaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $rootPageUid = 0;
         foreach ($GLOBALS['TSFE']->rootLine as $rootline) {
             if ($rootline['is_siteroot']) {
-                $rootPageUid = $rootline['uid'];
+                $rootPageUid = (int)$rootline['uid'];
                 break;
             }
         }

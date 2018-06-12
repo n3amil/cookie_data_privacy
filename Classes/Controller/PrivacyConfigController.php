@@ -38,15 +38,6 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     protected $fileIncludeRepository = null;
     
     /**
-     * initializeViewAction
-     */
-    public function initializeView(){
-        $this->view->assign(
-            'crtime', time()
-        );
-    }
-
-    /**
      * action list
      *
      * @return void
@@ -149,7 +140,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
             $countModelObj = $garbage.$key;
             $countModelObj = GeneralUtility::makeInstance('TYPO3Liebhaber\CookieDataPrivacy\Domain\Model\FileInclude');
             $jsFolderName = 'js';
-            $jsFileName = substr( md5( $key ), 0, 5 ); 
+            $jsFileName = substr( md5( (int)$value['uid'] ), 0, 10 ); 
 
             $originalPath = $value['originalPath'];
             $countModelObj->setOriginalPath($originalPath);
@@ -173,7 +164,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         foreach($cssexternal as $key=>$value){
             $cssCountModelObj = GeneralUtility::makeInstance('TYPO3Liebhaber\CookieDataPrivacy\Domain\Model\FileInclude');
             $cssFolderName = 'css';
-            $cssFileName = substr( md5( $key ), 0, 5 ); 
+            $cssFileName = substr( md5( (int)$value['uid'] ), 0, 10 ); 
 
             $originalPath = $value['originalPath'];
             $cssCountModelObj->setOriginalPath($originalPath);

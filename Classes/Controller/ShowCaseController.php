@@ -66,8 +66,15 @@ class ShowCaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         }
 
         $privacyConfigs = $this->privacyConfigRepository->findByRootPageUid($rootPageUid);
-        //DebuggerUtility::var_dump($privacyConfigs);exit;
-        $this->view->assign('privacyConfig', $privacyConfigs[0]);
+        $formIdsString = '';
+        if($privacyConfigs[0]->getFormId()){
+            $formIdsArr = explode(',',$privacyConfigs[0]->getFormId());
+            array_walk($formIdsArr, function(&$value, $key) { $value = '#'.$value; } );
+            $formIdsString = implode(',',$formIdsArr);
+        }
+        $this->view
+        ->assign('privacyConfig', $privacyConfigs[0])
+        ->assign('formIdsString', $formIdsString);
 
         if (empty($cookie_status) || $cookie_status === 'allow') {
             $this->view->assign('status', 1);

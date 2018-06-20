@@ -1,7 +1,0 @@
-### Include JS/CSS : system generated file, please donot add or modify ###
-
-page.includeJS{
-}
-
-page.includeCSS{
-}

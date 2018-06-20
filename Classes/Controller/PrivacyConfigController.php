@@ -111,6 +111,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $inFooter = ($privacyConfigSubmitData['inFooter'])? (int)$privacyConfigSubmitData['inFooter'] : 0;
         $jsScript = ($privacyConfigSubmitData['jsScript'])? $privacyConfigSubmitData['jsScript'] : '';
         $enableFormPrivacy = ($privacyConfigSubmitData['enableFormPrivacy'])? (int)$privacyConfigSubmitData['enableFormPrivacy'] : 0;
+        $formId = ($privacyConfigSubmitData['formId'])? $privacyConfigSubmitData['formId'] : '';
         $position = ($privacyConfigSubmitData['position'])? $privacyConfigSubmitData['position'] : '';
         $popupBackground = ($privacyConfigSubmitData['popupBackground'])? $privacyConfigSubmitData['popupBackground'] : '';
         $buttonBackground = ($privacyConfigSubmitData['buttonBackground'])? $privacyConfigSubmitData['buttonBackground'] : '';
@@ -125,6 +126,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $privacyConfigModel->setInFooter($inFooter);
         $privacyConfigModel->setJsScript($jsScript);
         $privacyConfigModel->setEnableFormPrivacy($enableFormPrivacy);
+        $privacyConfigModel->setFormId($formId);
         $privacyConfigModel->setPosition($position);
         $privacyConfigModel->setPopupBackground($popupBackground);
         $privacyConfigModel->setButtonBackground($buttonBackground);
@@ -183,8 +185,8 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $privacyConfigModel->setCssPathExternal($objectStorage);
 
         ### write TS for Include library ###
-        $tsSourceFile = 'IncludeTs.txt.cp';$tsWriteFile = 'IncludeTs.txt';$tsWritePath = 'Configuration/TypoScript/External/';
-        $this->writeTSFile($tsSourceFile,$tsWriteFile,$tsWritePath,$privacyConfigModel);
+        $tsSourceFile = 'IncludeTs.txt.cp';$tsWritePath = 'Configuration/TypoScript/External/Domain/';
+        $this->writeTSFile($tsSourceFile,$tsWritePath,$privacyConfigModel);
         
         $this->addFlashMessage('Configuration has been updated!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
         //DebuggerUtility::var_dump($privacyConfigModel);exit;
@@ -231,7 +233,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     *
     * write TS file for include library
     */
-    public function writeTSFile($tsSourceFile,$tsWriteFile,$tsFilePath,$privacyConfigs){
+    public function writeTSFile($tsSourceFile,$tsFilePath,$privacyConfigs){
         $variables = array('privacyConfigs' => $privacyConfigs);
 
         $standaloneView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
@@ -244,7 +246,7 @@ class PrivacyConfigController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 
         //write TS
         $directory = $extPath.$tsFilePath;
-        $filename = $tsWriteFile;
+        $filename = 'Root'.$privacyConfigs->getRootPageUid().'IncludeTs.typoscript';
         if (!file_exists($directory)) {
             mkdir($directory, 0777, true);
         }

@@ -1,0 +1,32 @@
+{
+  "name": "typo3liebhaber/cookie_data_privacy",
+  "type": "typo3-cms-extension",
+  "description": "Cookie Privacy: The Cookie Law is a piece of privacy legislation that requires websites to get consent from visitors to store or retrieve any information on a computer, smartphone or tablet. Data Privacy: Datenschutz-Grundverordnung (DSGVO), englisch General Data Protection Regulation (GDPR) is a regulation of the European Union , which standardises the rules on the processing of personal data by private companies and public authorities across the EU. DSGVO is directly applicable from 25 May 2018.",
+  "keywords": ["typo3", "cookie_data_privacy", "cookie_consent", "cookie_cuttr","cookie_law","cookie","DSGVO","GDPR","data_privacy","data_protection","data_law"],
+  "homepage": "https://github.com/ghanshyamgohel/cookie_data_privacy",
+  "authors": [
+    {
+      "name": "Ghanshyam B. Gohel",
+      "email": "ghanshyam.typo3developer@gmail.com",
+      "role": "Developer",
+      "homepage": "http://blog.typo3servers.info/"
+    }
+  ],
+  "license": [
+    "GPL-2.0+"
+  ],
+  "version": "9.0.0",
+  "require": {
+    "typo3/cms": ">=7.6.13 <9.3.99",
+    "fluidtypo3/vhs": ">=3.1.0 <8.7.99"
+  },
+  "autoload": {
+    "psr-4": {
+      "TYPO3Liebhaber\\CookieDataPrivacy\\": "Classes"
+    }
+  },
+  "replace": {
+    "cookie_data_privacy": "self.version",
+    "typo3-ter/cookie_data_privacy": "self.version"
+  }
+}

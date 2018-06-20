@@ -62,10 +62,21 @@ class FormPrivacyViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
                 break;
             }
         }
-		$formPrivacyData = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('uid,enable_form_privacy,cookie_page_uid,data_privacy_page_uid,domain', 'tx_cookiedataprivacy_domain_model_privacyconfig', '(deleted=0 AND hidden=0) AND root_page_uid='.$rootPageUid, '', '', '', '');
-		//DebuggerUtility::var_dump($formPrivacyData);exit;
+        
+        if (version_compare(TYPO3_version, '9.0.0', '<')) {
+            $formPrivacyData = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('uid,enable_form_privacy,cookie_page_uid,data_privacy_page_uid,domain', 'tx_cookiedataprivacy_domain_model_privacyconfig', '(deleted=0 AND hidden=0) AND root_page_uid='.$rootPageUid, '', '', '', '');
+        }else{
+            $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('tx_cookiedataprivacy_domain_model_privacyconfig');
+            $formPrivacyData = $queryBuilder
+                ->select('uid','enable_form_privacy','cookie_page_uid','data_privacy_page_uid','domain')
+                ->from('tx_cookiedataprivacy_domain_model_privacyconfig')
+                ->where('(deleted=0 AND hidden=0) AND root_page_uid='.$rootPageUid)
+                ->execute()
+                ->fetch();
+        }
+        //DebuggerUtility::var_dump($formPrivacyData);exit;
 		
-        // get extension settings
+		// get extension settings
 		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
 		$configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);

@@ -21,6 +21,9 @@
 			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.enable_form_privacy">
 				<target>Enable Form Privacy</target>
 			</trans-unit>
+			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.form_id">
+				<target>Form IDs</target>
+			</trans-unit>
 			<trans-unit id="tx_cookiedataprivacy_domain_model_privacyconfig.position">
 				<target>Position</target>
 			</trans-unit>

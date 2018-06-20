@@ -9,6 +9,7 @@ CREATE TABLE tx_cookiedataprivacy_domain_model_privacyconfig (
 	in_footer tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	js_script text NOT NULL,
 	enable_form_privacy tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	form_id text NOT NULL,
 	position varchar(255) DEFAULT '' NOT NULL,
 	popup_background varchar(255) DEFAULT '' NOT NULL,
 	button_background varchar(255) DEFAULT '' NOT NULL,

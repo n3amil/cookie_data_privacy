@@ -101,6 +101,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Form IDs:</label>
+                                    <f:form.textfield name="privacyconfig[formId]" class="form-control" value="{privacyConfigs.formId}"/>
+                                    <p class="help-block">[Data privacy form IDs separated by commas]</p>
+                                </div>
+                                <div class="form-group">
                                 	<label>Cookie popup position</label>
                                 	<select name="tx_cookiedataprivacy_tools_cookiedataprivacymod1[privacyconfig][position]" class="form-control">
                                 		<option value="bottom" <f:if condition="{privacyConfigs.position} == 'bottom'">selected</f:if> >Bottom</option>

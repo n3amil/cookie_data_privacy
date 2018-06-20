@@ -22,7 +22,7 @@ call_user_func(
         );
 
         // Add external TS setup
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $extKey . '/Configuration/TypoScript/External/IncludeTs.txt">');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $extKey . '/Configuration/TypoScript/External/IncludeTs.typoscript">');
 
 		// wizards
 		/*\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(

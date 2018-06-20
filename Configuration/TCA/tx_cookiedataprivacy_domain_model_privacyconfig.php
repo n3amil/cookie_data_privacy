@@ -20,10 +20,10 @@ return [
         'iconfile' => 'EXT:cookie_data_privacy/Resources/Public/Icons/tx_cookiedataprivacy_domain_model_privacyconfig.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, in_footer, js_script, enable_form_privacy, position, popup_background, button_background, domain, expiry_day, root_page_uid, cookie_page_uid, data_privacy_page_uid, js_path_external, css_path_external',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, in_footer, js_script, enable_form_privacy,form_id, position, popup_background, button_background, domain, expiry_day, root_page_uid, cookie_page_uid, data_privacy_page_uid, js_path_external, css_path_external',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, in_footer, js_script, enable_form_privacy, position, popup_background, button_background, domain, expiry_day, root_page_uid, cookie_page_uid, data_privacy_page_uid, js_path_external, css_path_external, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, in_footer, js_script, enable_form_privacy,form_id, position, popup_background, button_background, domain, expiry_day, root_page_uid, cookie_page_uid, data_privacy_page_uid, js_path_external, css_path_external, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -142,6 +142,14 @@ return [
 			    ],
 			    'default' => 0
 			]
+	    ],
+	    'form_id' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:cookie_data_privacy/Resources/Private/Language/locallang_db.xlf:tx_cookiedataprivacy_domain_model_privacyconfig.form_id',
+	        'config' => [
+			    'type' => 'input',
+			    'eval' => 'trim'
+			],
 	    ],
 	    'position' => [
 	        'exclude' => true,

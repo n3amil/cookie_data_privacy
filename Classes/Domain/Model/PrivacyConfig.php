@@ -39,6 +39,13 @@ class PrivacyConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $enableFormPrivacy = false;
 
     /**
+     * formId
+     *
+     * @var string
+     */
+    protected $formId = '';
+
+    /**
      * position
      *
      * @var string
@@ -217,6 +224,27 @@ class PrivacyConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the formId
+     *
+     * @return string $formId
+     */
+    public function getFormId()
+    {
+        return $this->formId;
+    }
+
+    /**
+     * Sets the formId
+     *
+     * @param string $formId
+     * @return void
+     */
+    public function setFormId($formId)
+    {
+        $this->formId = $formId;
+    }
+    
+    /**
      * Returns the position
      *
      * @return string $position
@@ -236,7 +264,6 @@ class PrivacyConfig extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->position = $position;
     }
-
     /**
      * Returns the popupBackground
      *

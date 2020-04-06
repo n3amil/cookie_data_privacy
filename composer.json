@@ -15,7 +15,7 @@
   "license": [
     "GPL-2.0+"
   ],
-  "version": "v9.1.2",
+  "version": "v9.1.4",
   "require": {
     "typo3/cms-core": "^9.5",
     "fluidtypo3/vhs": "^6"
